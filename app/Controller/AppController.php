@@ -18,7 +18,8 @@ class AppController extends Controller {
             	'Form' => array(
                 	'scope' => array('User.ativo' => 1)
             	)
-        	)
+        	),
+        	'user' => array('grupo')
 		)		
 	);
 	

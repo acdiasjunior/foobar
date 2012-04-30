@@ -1,0 +1,31 @@
+-- phpMyAdmin SQL Dump
+-- version 3.3.9
+-- http://www.phpmyadmin.net
+--
+-- Servidor: localhost
+-- Tempo de Geração: Abr 30, 2012 as 04:18 AM
+-- Versão do Servidor: 5.1.53
+-- Versão do PHP: 5.3.4
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+--
+-- Banco de Dados: `viacom`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `users`
+--
+
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) DEFAULT NULL,
+  `password` varchar(64) DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  `ativo` tinyint(1) DEFAULT NULL,
+  `grupo` char(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
