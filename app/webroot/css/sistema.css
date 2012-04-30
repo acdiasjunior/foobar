@@ -1,0 +1,48 @@
+/* Ordem alfabética */
+
+#container {
+	min-height: 100%;
+	position: relative;
+}
+
+#conteudo {
+	padding-bottom: 30px;
+}
+
+html, body {
+	height: 100%;
+}
+
+* html #container {
+	height: 100%; /* hack para IE6 que trata height como min-height */
+}
+
+.home_destque_programacao {
+	background-color: red; /* Apenas para marcação de div*/
+}
+
+.home_destque_video {
+	background-color: blue; /* Apenas para marcação de div*/	
+}
+
+.home_login {
+	background-color: yellow; /* Apenas para marcação de div*/	
+}
+
+.home_logos {
+	background-color: gray; /* Apenas para marcação de div*/
+}
+
+#menu_canais {
+	background-color: cyan; /* Apenas para marcação de div*/
+}
+
+#menu_superior {
+	background-color: orange; /* Apenas para marcação de div*/
+}
+
+#rodape {
+	background-color: green; /* Apenas para marcação de div*/
+	position: relative;
+	bottom: 0;
+}

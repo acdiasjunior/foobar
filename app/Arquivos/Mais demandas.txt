@@ -1,0 +1,15 @@
+Boa noite Diego,
+
+No projeto de Viacom temos algumas solicitações do cliente que precisamos ver se cabem  no escopo original e senão gerar uma proposta adicional.
+
+São eles:
+
+1. Home Canais - Inserir um Box Vídeos.  (o vídeo será postado via Admin)
+
+2. Home Principal/Canais - Compartilhamento do Vídeo (Twitter e Facebook)
+
+3. Canais/Programação - Não querem uma planilha Excel como acontece hoje, querem uma página, como as demais com a exibição dos horários de programação sem download. Pensar em uma solução simples para a exibição desse conteúdo. 
+
+4. Classificação Indicativa – mesmo caso do item 3
+
+5. Destaques da Programação - Querem poder redimensionar a thumb. Escolher que parte da imagem será visualizada.
