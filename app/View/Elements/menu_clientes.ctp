@@ -1,3 +1,3 @@
 <?php 
-	echo $this->Html->link('Logout', '/users/logout');
+	echo $this->Html->link('Logout', '/usuarios/logout');
 ?>  

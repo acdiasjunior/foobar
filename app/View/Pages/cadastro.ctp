@@ -1,6 +1,11 @@
 Quer ter acesso a todo o conteúdo do portal Viacom? Solicite seu login preenchendo os campos abaixo. 
 <?php
 
+	if ($status) {
+		echo $status;
+		return;
+	}
+
  	echo $this->Form->create('Pages'); 
  	echo $this->Form->input('categoria', array('label' => 'Categoria', 'type' => 'select', 'options' => $categorias));
  	echo $this->Form->input('empresa', array('type' => 'text', 'label' => 'Empresa'));
@@ -11,5 +16,3 @@ Quer ter acesso a todo o conteúdo do portal Viacom? Solicite seu login preenche
  	echo $this->Form->input('senha', array('type' => 'password', 'label' => 'Senha'));
  	echo $this->Form->input('confirma_senha', array('type' => 'password', 'label' => 'Confirmar senha'));
 	echo $this->Form->end('Enviar cadastro');
-
-	if ($status) echo $status;

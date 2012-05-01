@@ -42,7 +42,7 @@
 		<div id="menu_usuario">
 			<?php
 				if ($usuario) {
-					$menu = ($usuario['User']['grupo'] == 'A') ? 'menu_administrador' : 'menu_clientes'; 
+					$menu = ($usuario['Usuario']['grupo'] == 'A') ? 'menu_administrador' : 'menu_clientes'; 
 			 		echo $this->element($menu);
 				} 
 			 ?> 

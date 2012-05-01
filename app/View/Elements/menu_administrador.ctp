@@ -1,8 +1,8 @@
 <?php 
-	echo $this->Html->link('Clientes', '/clients/index');
+	echo $this->Html->link('Clientes', '/clientes/index');
 	echo ' | ';
-	echo $this->Html->link('Usuários', '/users/index');
+	echo $this->Html->link('Usuários', '/usuarios/index');
 	echo ' | ';
-	echo $this->Html->link('Configurações', '/configurations/index');
+	echo $this->Html->link('Configurações', '/configuracoes/index');
 	echo ' | ';
-	echo $this->Html->link('Logout', '/users/logout');
+	echo $this->Html->link('Logout', '/usuarios/logout');

@@ -17,32 +17,32 @@ class PagesController extends Controller {
 		
 		$this->set('title_for_layout', 'Quero me cadastrar');
 		
-		$this->loadModel('Client');
+		$this->loadModel('Cliente');
 		
 		if ($this->request->is('post')) {
 			
-			$this->loadModel('Configuration');
-			$configuracoes = $this->Configuration->read(array('aprovador_operadora','aprovador_outros','aprovador_agencia','aprovador_cliente'), 1);
+			$this->loadModel('Configuracao');
+			$configuracoes = $this->Configuracao->read(array('aprovador_operadora','aprovador_outros','aprovador_agencia','aprovador_cliente'), 1);
 			
 			$email = new CakeEmail('smtp');
 			
 			if (in_array($this->request->data['Pages']['categoria'], array('operadora', 'outros'))) {
-				$to = array($configuracoes['Configuration']['aprovador_operadora'], $configuracoes['Configuration']['aprovador_outros']);
+				$to = array($configuracoes['Configuracao']['aprovador_operadora'], $configuracoes['Configuracao']['aprovador_outros']);
 			} else {
-				$to = array($configuracoes['Configuration']['aprovador_agencia'], $configuracoes['Configuration']['aprovador_cliente']);
+				$to = array($configuracoes['Configuracao']['aprovador_agencia'], $configuracoes['Configuracao']['aprovador_cliente']);
 			}
 			
-			$msg  = 'Categoria: ' . 			$cliente['Client']['categoria'] 		= $this->request->data['Pages']['categoria'];
-			$msg .= '<br />Empresa: ' . 		$cliente['Client']['empresa'] 			= $this->request->data['Pages']['empresa'];
-			$msg .= '<br />Nome: ' . 			$cliente['Client']['nome'] 				= $this->request->data['Pages']['nome'];
-			$msg .= '<br />Data Nascimento: ' . $cliente['Client']['data_nascimento'] 	= $this->request->data['Pages']['data_nascimento'];
-			$msg .= '<br />Email: ' . 			$cliente['Client']['email'] 			= $this->request->data['Pages']['email'];
-			$msg .= '<br />Telefone: ' . 		$cliente['Client']['telefone'] 			= $this->request->data['Pages']['telefone'];
-			$msg .= '<br />Senha: ' . 			$cliente['Client']['senha'] 			= $this->request->data['Pages']['senha'];
+			$msg  = 'Categoria: ' . 			$cliente['Cliente']['categoria'] 		= $this->request->data['Pages']['categoria'];
+			$msg .= '<br />Empresa: ' . 		$cliente['Cliente']['empresa'] 			= $this->request->data['Pages']['empresa'];
+			$msg .= '<br />Nome: ' . 			$cliente['Cliente']['nome'] 			= $this->request->data['Pages']['nome'];
+			$msg .= '<br />Data Nascimento: ' . $cliente['Cliente']['data_nascimento'] 	= $this->request->data['Pages']['data_nascimento'];
+			$msg .= '<br />Email: ' . 			$cliente['Cliente']['email'] 			= $this->request->data['Pages']['email'];
+			$msg .= '<br />Telefone: ' . 		$cliente['Cliente']['telefone'] 		= $this->request->data['Pages']['telefone'];
+			$msg .= '<br />Senha: ' . 			$cliente['Cliente']['senha'] 			= $this->request->data['Pages']['senha'];
 			
-			$cliente['Client']['situacao'] = 0; // Aguardando aprovação
+			$cliente['Cliente']['situacao'] = 0; // Aguardando aprovação
 
-			if ($email->emailFormat('html')->from(array('contato@viacom.com' => 'Viacom'))->to($to)->subject('Cadastro')->send($msg)) {
+			if ($email->emailFormat('html')->subject('Solicitação de Cadastro')->from(array('contato@viacom.com' => 'Viacom'))->to($to)->subject('Cadastro')->send($msg)) {
 				$email->viewVars(
 					array(
 						'nome' => $this->request->data['Pages']['nome'],
@@ -50,11 +50,11 @@ class PagesController extends Controller {
 						'senha' => $this->request->data['Pages']['senha']
 					)
 				);
-				$email->template('resposta_cadastro', 'respostas')->emailFormat('html')->to($this->request->data['Pages']['email'])->from('contato@viacom.com')->send();
+				$email->template('resposta_cadastro', 'respostas')->emailFormat('html')->subject('Solicitação de Cadastro')->to($this->request->data['Pages']['email'])->from('contato@viacom.com')->send();
 				
 				$status = 'Cadastro enviado com sucesso!<br />O seu acesso será liberado após uma breve análise das informações recebidas.<br />Aguarde e-mail de confirmação.';
 				
-				$this->Client->save($cliente, array('callbacks' => false, 'validade' => false));
+				$this->Cliente->save($cliente, array('callbacks' => false, 'validade' => false));
 				
 			} else {
 				$status = 'Não foi possível enviar o email. Tente novamente em alguns segundos.';
@@ -64,13 +64,13 @@ class PagesController extends Controller {
 			$status = '';
 		}
 		
-		$this->set('categorias', $this->Client->carregar_categoria());
+		$this->set('categorias', $this->Cliente->carregar_categoria());
 		$this->set('status', $status);
 	}
 	
 	public function home() {
 		
-		$this->set ('user', $this->Cookie->read('User'));
+		$this->set ('cookie_usuario', $this->Cookie->read('Usuario'));
 		
 	}
 }

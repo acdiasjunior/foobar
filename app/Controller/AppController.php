@@ -1,6 +1,7 @@
 <?php
 
 App::uses('Controller', 'Controller');
+App::uses('CakeEmail', 'Network/Email');
 
 class AppController extends Controller {
 
@@ -12,15 +13,16 @@ class AppController extends Controller {
         'Auth' => array(
         	'authorize' => 'Controller',
 			'authError' => 'Desculpe. Acesso não permitido!',
-			'loginAction' => array('controller' => 'users', 'action' => 'login'),
-			'loginRedirect' => array('controller' => 'users', 'action' => 'home'), // se alterar, permitir!
-			'logoutRedirect' => array('controller' => 'users', 'action' => 'login'),
+			'loginAction' => array('controller' => 'usuarios', 'action' => 'login'),
+			'loginRedirect' => array('controller' => 'usuarios', 'action' => 'home'), // se alterar, permitir!
+			'logoutRedirect' => array('controller' => 'pages', 'action' => 'home'),
 			'authenticate' => array(
             	'Form' => array(
-                	'scope' => array('User.ativo' => 1)
+                	'scope' => array('Usuario.ativo' => 1),
+					'userModel' => 'Usuario'
             	)
         	),
-        	'user' => array('grupo')
+        	'usuario' => array('grupo')
 		)		
 	);
 	
