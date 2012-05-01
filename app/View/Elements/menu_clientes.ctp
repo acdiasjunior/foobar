@@ -1,1 +1,3 @@
-Menu Clientes 
+<?php 
+	echo $this->Html->link('Logout', '/users/logout');
+?>  

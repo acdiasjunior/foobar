@@ -7,6 +7,7 @@ class AppController extends Controller {
 	public $helpers = array('Html', 'Form', 'Session');
 
 	public $components = array(
+		'Cookie',
 		'Session',
         'Auth' => array(
         	'authorize' => 'Controller',
@@ -30,7 +31,8 @@ class AppController extends Controller {
 	}
 
     public function isAuthorized($user = null) {
-   		
-       	return true;
+    	
+    	return true;
+    	
     }        	
 }

@@ -10,4 +10,6 @@ Quer ter acesso a todo o conteúdo do portal Viacom? Solicite seu login preenche
  	echo $this->Form->input('telefone', array('type' => 'text', 'label' => 'Telefone'));
  	echo $this->Form->input('senha', array('type' => 'password', 'label' => 'Senha'));
  	echo $this->Form->input('confirma_senha', array('type' => 'password', 'label' => 'Confirmar senha'));
-	echo $this->Form->end('Enviar cadastro');	
+	echo $this->Form->end('Enviar cadastro');
+
+	if ($status) echo $status;

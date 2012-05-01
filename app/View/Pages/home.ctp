@@ -1,3 +1,5 @@
+<?php $usuario = SessionComponent::read('usuario'); ?>
+
 <div class="home_destque_programacao">
 	Destaque Programação
 </div>
@@ -6,9 +8,13 @@
 	Destaque Vídeo
 </div>
 
-<div class="home_login">
-	<?php include_once 'login.ctp'; ?>
-</div>
+<?php
+	if (!$usuario) {
+		echo '<div class="home_login">';
+	 	include_once 'login.ctp';
+		echo '</div>';
+	}
+?>
 
 <div class="home_logos">
 	Logos

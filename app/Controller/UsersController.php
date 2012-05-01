@@ -11,11 +11,10 @@ class UsersController extends AppController {
 		if ($this->request->is('post')) {
 			if ($this->User->save($this->request->data)) {
 				$this->Session->setFlash('Usuário cadastrado com sucesso!', 'default', array('class' => 'authSuccess'));
+				$this->redirect('/users/index');
 			} else {
 				$this->Session->setFlash('Erro!', 'default', array('class' => 'authError'));
 			}
-		} else {
-			
 		}
 		
 		$this->set('grupos', array('A' => 'Administrador', 'C' => 'Cliente'));
@@ -25,7 +24,17 @@ class UsersController extends AppController {
 		
 		$this->Auth->allow(array('add'));
 		parent::beforeFilter();
+		
 	}
+	
+	public function delete($id) {
+
+		if ($this->User->delete($id, true)) {
+			$this->Session->setFlash('Registro excluído com sucesso!', 'default', array('class' => 'flashOk'));
+		}
+		
+		$this->redirect(array('action' => 'index'));
+	}	
 	
 	public function edit($id) {
 		
@@ -34,6 +43,7 @@ class UsersController extends AppController {
 		if ($this->request->is('post')) {
 			if ($this->User->save($this->request->data)) {
 				$this->Session->setFlash('Usuário alterado com sucesso!', 'default', array('class' => 'authSuccess'));
+				$this->redirect('/users/index');
 			} else {
 				$this->Session->setFlash('Erro!', 'default', array('class' => 'authError'));
 			}
@@ -76,6 +86,7 @@ class UsersController extends AppController {
 		        'id' => $registro[$this->modelClass]['id'],
 		        'cell' => array(
 					$registro[$this->modelClass]['id'],
+					$registro[$this->modelClass]['nome'],
 					$registro[$this->modelClass]['username']
 				)
 			);
@@ -88,12 +99,31 @@ class UsersController extends AppController {
 		
 		$this->set('title_for_layout', 'Usuários');
 	}
+	
+	public function isAuthorized($user) {
+		
+		$usuario = SessionComponent::read('usuario');
+		
+		if ($usuario['User']['grupo'] == 'A') {
+			return true;
+		} else if (in_array($this->action, array('logout'))) {
+	        return true;
+	    }
+		
+	    return false;
+	}
 
 	public function login() {
 		
 		if ($this->request->is('post')) {
 			
 			if ($this->Auth->login()) {
+				
+				if ($this->request->data['User']['lembrar_senha'] == 1) {
+					$this->Cookie->write('User', array('username' => $this->request->data['User']['username'], 'password' => $this->request->data['User']['password']), false);
+				} else {
+					$this->Cookie->delete('User');
+				}
 
 				$this->Session->write('usuario', $this->User->read(array(), $this->Auth->user('id')));
 				$this->Session->setFlash('Login efetuado com sucesso!', 'default', array('class' => 'authSuccess'));

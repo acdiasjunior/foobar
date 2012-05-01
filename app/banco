@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tempo de Geração: Abr 30, 2012 as 04:18 AM
+-- Tempo de Geração: Mai 01, 2012 as 02:31 PM
 -- Versão do Servidor: 5.1.53
 -- Versão do PHP: 5.3.4
 
@@ -16,16 +16,58 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `clients`
+--
+
+CREATE TABLE IF NOT EXISTS `clients` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `categoria` varchar(50) DEFAULT NULL,
+  `empresa` varchar(100) DEFAULT NULL,
+  `nome` varchar(100) DEFAULT NULL,
+  `data_nascimento` date DEFAULT NULL,
+  `email` varchar(200) DEFAULT NULL,
+  `telefone` varchar(14) DEFAULT NULL,
+  `senha` varchar(50) DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  `situacao` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `configurations`
+--
+
+CREATE TABLE IF NOT EXISTS `configurations` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `aprovador_operadora` varchar(200) DEFAULT NULL,
+  `aprovador_outros` varchar(200) DEFAULT NULL,
+  `aprovador_agencia` varchar(200) DEFAULT NULL,
+  `aprovador_cliente` varchar(200) DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `users`
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `username` varchar(50) DEFAULT NULL,
+  `username` varchar(30) DEFAULT NULL,
   `password` varchar(64) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   `ativo` tinyint(1) DEFAULT NULL,
   `grupo` char(1) DEFAULT NULL,
+  `nome` varchar(50) DEFAULT NULL,
+  `email` varchar(200) DEFAULT NULL,
+  `departamento` varchar(50) DEFAULT NULL,
+  `telefone` varchar(14) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;

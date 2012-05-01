@@ -1,17 +1,16 @@
-<table id="usuarios" style="display: none">
+<table id="clientes" style="display: none">
 </table>
 
 <script type="text/javascript">
-    $("#usuarios").flexigrid({
+    $("#clientes").flexigrid({
         url: '<?php echo $this->Html->url(array('controller' => $this->request->controller, 'action' => 'grid')); ?>',
         dataType: 'json',
         colModel : [
             {display: 'Id', 	name : 'id', width : 40, sortable : true, align: 'center', hide: true},
             {display: 'Nome', 	name : 'nome', width : 210, sortable : true, align: 'left'},
-            {display: 'Login', 	name : 'username', width : 210, sortable : true, align: 'left'}
+            {display: 'Status', name : 'status', width : 210, sortable : true, align: 'left'}
         ],
         buttons : [
-			{name: 'Incluir', bclass: 'add', onpress : actions},
 			{name: 'Excluir', bclass: 'delete', onpress : actions},
 			{separator: true}
 		],        
@@ -37,7 +36,7 @@
         nomsg:'Nenhum item'
     });
 
-    $('#usuarios').dblclick( function(){
+    $('#clientes').dblclick( function(){
         var id = $('.trSelected').find('td[abbr="id"]').text();
         if(id != '')
             $(location).attr('href','<?php echo $this->Html->url(array('controller' => $this->request->controller, 'action' => 'edit')); ?>/' + id);
@@ -45,7 +44,7 @@
     
     function actions(com, grid) {
 		var id = $('.trSelected', grid).find('td[abbr="id"]').text();
-        var nome = $('.trSelected', grid).find('td[abbr="username"]').text();
+        var nome = $('.trSelected', grid).find('td[abbr="nome"]').text();
         switch(com) {
 			case "Incluir":
                 $(location).attr('href','<?php echo $this->Html->url(array('controller' => $this->request->controller, 'action' => 'add')); ?>');
