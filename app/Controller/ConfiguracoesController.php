@@ -6,11 +6,12 @@ class ConfiguracoesController extends AppController {
 	
 	public function parametros_iniciais() {
 		if ($this->Configuracao->find('count') == 0) {
-			$configuracao['Configuracao'][0]['parametro'] = 'email_aprovador_operadora';
-			$configuracao['Configuracao'][1]['parametro'] = 'email_aprovador_agencia';
-			$configuracao['Configuracao'][2]['parametro'] = 'email_aprovador_cliente';
-			$configuracao['Configuracao'][3]['parametro'] = 'email_aprovador_outros';
-			$this->Configuracao->saveAll($configuracao['Configuracao']);
+			$configuracao[]['Configuracao']['parametro'] = 'email_aprovador_operadora';
+			$configuracao[]['Configuracao']['parametro'] = 'email_aprovador_agencia';
+			$configuracao[]['Configuracao']['parametro'] = 'email_aprovador_cliente';
+			$configuracao[]['Configuracao']['parametro'] = 'email_aprovador_outros';
+						
+			$this->Configuracao->saveAll($configuracao);
 		}
 	}
 	
@@ -31,7 +32,7 @@ class ConfiguracoesController extends AppController {
 		$this->set('title_for_layout', 'Configurações');
 
 		if ($this->request->is('post')) {
-			if ($this->Configuracao->saveAll($this->request->data['Configuracao'])) {
+			if ($this->Configuracao->saveAll($this->request->data)) {
 				$this->Session->setFlash('Dados alterados com sucesso!', 'default', array('class' => 'authSuccess'));
 			} else {
 				$this->Session->setFlash('Erro!', 'default', array('class' => 'authError'));
