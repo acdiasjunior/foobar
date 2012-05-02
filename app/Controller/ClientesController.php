@@ -26,6 +26,9 @@ class ClientesController extends AppController {
 					$this->Session->setFlash('Erro!', 'default', array('class' => 'authError'));
 				}
 			}
+			
+			$this->Cliente->mudar_situacao($id, '1');
+			$this->redirect('/clientes/index');
 		} else {
 			$this->Cliente->id = $id;
 			$this->request->data = $this->Cliente->read();
@@ -38,18 +41,9 @@ class ClientesController extends AppController {
 		$this->set('title_for_layout', 'Editar Cliente');
 		
 		if ($this->request->is('post')) {
-			$enviar_email_aprovacao = false;
-			if ($this->request->data['Cliente']['situacao'] != 1 && $this->request->data['Cliente']['situacao_alterado'] == 1) {
-				$enviar_email_aprovacao = true;
-			}
-			$this->request->data['Cliente']['situacao'] = $this->request->data['Cliente']['situacao_alterado'];
 			if ($this->Cliente->save($this->request->data)) {
 				$this->Session->setFlash('Cliente alterado com sucesso!', 'default', array('class' => 'authSuccess'));
-				if ($enviar_email_aprovacao) {
-					$this->redirect("/clientes/aprovacao/$id");
-				} else {
-					$this->redirect('/clientes/index');
-				}
+				$this->redirect('/clientes/index');
 			} else {
 				$this->Session->setFlash('Erro!', 'default', array('class' => 'authError'));
 			}
@@ -116,5 +110,11 @@ class ClientesController extends AppController {
 		} 
 		
 	    return false;
-	}	
+	}
+	
+	public function mudar_situacao($id, $situacao) {
+		
+		$this->Cliente->mudar_situacao($id, $situacao);
+		$this->redirect($this->referer());
+	}
 }

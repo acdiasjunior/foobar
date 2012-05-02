@@ -8,10 +8,11 @@
         colModel : [
             {display: 'Id', 	name : 'id', width : 40, sortable : true, align: 'center', hide: true},
             {display: 'Nome', 	name : 'nome', width : 210, sortable : true, align: 'left'},
-            {display: 'Status', name : 'status', width : 210, sortable : true, align: 'left'}
+            {display: 'Situação', name : 'situacao', width : 210, sortable : true, align: 'left'}
         ],
         buttons : [
-			{name: 'Excluir', bclass: 'delete', onpress : actions},
+			{name: 'Aprovar', bclass: 'edit', onpress : actions},
+			{name: 'Cancelar', bclass: 'delete', onpress : actions},
 			{separator: true}
 		],        
         searchitems : [
@@ -45,18 +46,43 @@
     function actions(com, grid) {
 		var id = $('.trSelected', grid).find('td[abbr="id"]').text();
         var nome = $('.trSelected', grid).find('td[abbr="nome"]').text();
+        var situacao = $('.trSelected', grid).find('td[abbr="situacao"]').text();
+        
         switch(com) {
-			case "Incluir":
-                $(location).attr('href','<?php echo $this->Html->url(array('controller' => $this->request->controller, 'action' => 'incluir')); ?>');
+			case "Aprovar":
+				if (id != '') {
+					aprovar(id, situacao);
+				} else {
+					alert('Selecione um cliente!');
+				}
                 break;
-            case "Excluir":
-                if(id != ''){
-                    if(confirm('Deseja realmente excluir?\n' + nome))
-                        $(location).attr('href','<?php echo $this->Html->url(array('controller' => $this->request->controller, 'action' => 'delete')); ?>/' + id);
-                }else
-                    alert('Selecione um registro primeiro!');
-                break;
+
+            case "Cancelar":
+				if (id != '') {
+					cancelar(id, situacao, nome);
+				} else {
+					alert('Selecione um cliente!');
+				}
+                break;                
+
 		}
-	}    
+	}
+
+	function aprovar(id, situacao_atual) {
+
+        if (situacao_atual != 'Aprovado'){
+			$(location).attr('href','<?php echo $this->Html->url(array('controller' => 'clientes', 'action' => 'aprovacao')); ?>/' + id);
+        } else
+        	alert('Este cliente já está aprovado!');
+	}
+
+	function cancelar(id, situacao_atual, nome) {
+
+    	if (situacao_atual != 'Cancelado'){
+            if(confirm('Deseja realmente cancelar?\n' + nome))
+				$(location).attr('href','<?php echo $this->Html->url(array('controller' => $this->request->controller, 'action' => 'mudar_situacao')); ?>/' + id + '/2');
+        } else
+            alert('Este cliente já está cancelado!');
+	}	
 
 </script>

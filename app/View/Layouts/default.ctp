@@ -39,14 +39,15 @@
 			<?php echo $this->element('menu_superior'); ?> 
 		</div>
 		
-		<div id="menu_usuario">
-			<?php
-				if ($usuario) {
-					$menu = ($usuario['Usuario']['grupo'] == 'A') ? 'menu_administrador' : 'menu_clientes'; 
-			 		echo $this->element($menu);
-				} 
-			 ?> 
-		</div>
+		
+		<?php
+			if ($usuario) {
+				echo '<div id="menu_usuario">';
+				$menu = ($usuario['Usuario']['grupo'] == 'A') ? 'menu_administrador' : 'menu_clientes'; 
+		 		echo $this->element($menu);
+		 		echo '</div>';
+			} 
+		 ?> 
 		
 		<div id="conteudo">
 			<?php 
@@ -55,7 +56,7 @@
 				echo $this->fetch('content'); 
 			?>
 		</div>
-
+		
 	</div>
 	
 	<div id="rodape">

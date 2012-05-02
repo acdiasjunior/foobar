@@ -8,13 +8,15 @@
 	Destaque Vídeo
 </div>
 
+<div class="home_login">
 <?php
 	if (!$usuario) {
-		echo '<div class="home_login">';
 	 	include_once 'login.ctp';
-		echo '</div>';
 	}
 ?>
+</div>
+
+<div style="clear:both;"></div>
 
 <div class="home_logos">
 	Logos

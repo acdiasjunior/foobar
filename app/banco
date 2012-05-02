@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tempo de Geração: Mai 01, 2012 as 04:04 PM
+-- Tempo de Geração: Mai 02, 2012 as 12:35 AM
 -- Versão do Servidor: 5.1.53
 -- Versão do PHP: 5.3.4
 
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `clientes` (
   `modified` datetime DEFAULT NULL,
   `situacao` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 -- --------------------------------------------------------
 
@@ -42,14 +42,12 @@ CREATE TABLE IF NOT EXISTS `clientes` (
 
 CREATE TABLE IF NOT EXISTS `configuracoes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `aprovador_operadora` varchar(200) DEFAULT NULL,
-  `aprovador_outros` varchar(200) DEFAULT NULL,
-  `aprovador_agencia` varchar(200) DEFAULT NULL,
-  `aprovador_cliente` varchar(200) DEFAULT NULL,
+  `parametro` varchar(200) DEFAULT NULL,
+  `valor` varchar(200) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 -- --------------------------------------------------------
 
@@ -70,4 +68,4 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `departamento` varchar(50) DEFAULT NULL,
   `telefone` varchar(14) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;

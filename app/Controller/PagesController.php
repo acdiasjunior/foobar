@@ -22,15 +22,19 @@ class PagesController extends Controller {
 		if ($this->request->is('post')) {
 			
 			$this->loadModel('Configuracao');
-			$configuracoes = $this->Configuracao->read(array('aprovador_operadora','aprovador_outros','aprovador_agencia','aprovador_cliente'), 1);
+			
+			$parametro = 'email_aprovador_' . $this->request->data['Pages']['categoria'];
+			
+			$email_aprovador = $this->Configuracao->field('valor', array('parametro' => $parametro));
+			
+			if (!$email_aprovador) {
+				$this->Session->setFlash('Email de aprovador não encontrado nas configurações!', 'default', array('class' => 'authError'));
+				$this->redirect($this->referer());
+			}
 			
 			$email = new CakeEmail('smtp');
 			
-			if (in_array($this->request->data['Pages']['categoria'], array('operadora', 'outros'))) {
-				$to = array($configuracoes['Configuracao']['aprovador_operadora'], $configuracoes['Configuracao']['aprovador_outros']);
-			} else {
-				$to = array($configuracoes['Configuracao']['aprovador_agencia'], $configuracoes['Configuracao']['aprovador_cliente']);
-			}
+			$to = $email_aprovador;
 			
 			$msg  = 'Categoria: ' . 			$cliente['Cliente']['categoria'] 		= $this->request->data['Pages']['categoria'];
 			$msg .= '<br />Empresa: ' . 		$cliente['Cliente']['empresa'] 			= $this->request->data['Pages']['empresa'];

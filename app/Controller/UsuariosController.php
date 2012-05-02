@@ -93,7 +93,11 @@ class UsuariosController extends AppController {
 		}
 
 		return json_encode($data);
-	}	
+	}
+	
+	public function home() {
+		
+	}
 
 	public function index() {
 		
@@ -127,6 +131,7 @@ class UsuariosController extends AppController {
 
 				$this->Session->write('usuario', $this->Usuario->read(array(), $this->Auth->user('id')));
 				$this->Session->setFlash('Login efetuado com sucesso!', 'default', array('class' => 'authSuccess'));
+				return $this->redirect('/usuarios/home');
 				
 			} else {
 				

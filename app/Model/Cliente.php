@@ -17,7 +17,7 @@ class Cliente extends AppModel {
     
     public function carregar_situacao() {
     	return array(
-    		0 => 'Aguarando aprovação',
+    		0 => 'Aguardando aprovação',
     		1 => 'Aprovado',
     		2 => 'Cancelado'
     	);
@@ -27,4 +27,13 @@ class Cliente extends AppModel {
     	$itens = $this->carregar_situacao();
     	return $itens[$item];
     }
+    
+	public function mudar_situacao($id, $situacao) {
+		
+		$cliente = array();
+		$cliente['Cliente']['id'] = $id;
+		$cliente['Cliente']['situacao'] = $situacao;
+		$this->save($cliente, array('callbacks' => false, 'validate' => false));
+		
+	}    
 }

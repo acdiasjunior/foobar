@@ -1,0 +1,25 @@
+/*-----------------------------------------------------------------------------------\
+	CLASSE: S I M P L E S
+\-----------------------------------------------------------------------------------*/
+
+table.simples {
+	border-collapse: collapse;
+	border: 1px dotted #4682B4;
+}
+
+table.simples td {
+	border-collapse: collapse;
+	border: 1px dotted #4682B4;
+}
+
+table.simples th {
+	background-color: #4682B4;	
+	border-collapse: collapse;
+	border: 1px dotted #4682B4;
+	color: white;
+}
+
+table.simples .text, table.simples .select {
+	width: 100%;
+	text-align: center;
+}

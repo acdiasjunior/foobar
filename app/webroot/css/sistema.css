@@ -1,16 +1,19 @@
 /* Ordem alfabética */
 
 #container {
+	margin-left: 10%;
 	min-height: 100%;
 	position: relative;
+	width: 80%;
 }
 
 #conteudo {
-	padding-bottom: 30px;
+	margin-top: 5px;
 }
 
 html, body {
-	height: 98%;
+	height: 97%;
+	background-color: SkyBlue;
 }
 
 * html #container {
@@ -18,31 +21,98 @@ html, body {
 }
 
 .home_destque_programacao {
-	background-color: red; /* Apenas para marcação de div*/
+    background-color: white;
+    border-radius: 10px 10px 10px 10px;
+    border: 1px solid;
+    float: left;
+    margin-top: 5px;
+    min-height: 380px;
+    padding: 10px;
+    width: 50%;
 }
 
 .home_destque_video {
-	background-color: blue; /* Apenas para marcação de div*/	
+    background-color: white;
+    border: 1px solid;
+    border-radius: 10px 10px 10px 10px;
+    float: right;
+    margin-top: 5px;
+    min-height: 240px;
+    padding: 10px;
+    width: 45%;
 }
 
 .home_login {
-	background-color: yellow; /* Apenas para marcação de div*/	
+    background-color: white;
+    border: 1px solid;
+    border-radius: 10px 10px 10px 10px;
+    float: right;
+    margin-top: 5px;
+    min-height: 113px;
+    padding: 10px;
+    width: 45%;
 }
 
 .home_logos {
-	background-color: gray; /* Apenas para marcação de div*/
+	/*
+    background-color: white;
+    border: 1px solid;
+    border-radius: 10px 10px 10px 10px;
+    clear: left;
+    margin-top: 5px;
+    min-height: 80px;
+    padding: 10px;*/
+    
+    background-color: white;
+    border: 1px solid;
+    border-radius: 10px 10px 10px 10px;
+    margin-top: 5px;
+    padding: 10px;
+    text-align: center;    
+}
+
+.home_usuario {
+    background-color: white;
+    border: 1px solid;
+    border-radius: 10px 10px 10px 10px;
+    float: left;
+    margin-top: 5px;
+    min-height: 80px;
+    padding: 10px;
 }
 
 #menu_canais {
-	background-color: cyan; /* Apenas para marcação de div*/
+    background-color: white;
+    border: 1px solid;
+    border-radius: 10px 10px 10px 10px;
+    margin-top: 5px;
+    padding: 10px;
+    text-align: center;
 }
 
 #menu_superior {
-	background-color: orange; /* Apenas para marcação de div*/
+    background-color: white;
+    border: 1px solid;
+    border-radius: 10px 10px 10px 10px;
+    margin-top: 5px;
+    padding: 10px;
+    text-align: center;
+}
+
+#menu_usuario {
+    background-color: white;
+    border: 1px solid;
+    border-radius: 10px 10px 10px 10px;
+    margin-top: 5px;
+    padding: 10px;
+    text-align: center;
 }
 
 #rodape {
-	background-color: green; /* Apenas para marcação de div*/
-	position: relative;
-	bottom: 0;
+    bottom: 0;
+    clear: left;
+    margin-top: 5px;
+    margin-left: 10%;
+    position: relative;
+    width: 80%;	
 }
