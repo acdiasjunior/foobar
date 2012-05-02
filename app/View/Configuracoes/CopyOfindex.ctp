@@ -8,8 +8,8 @@
  	foreach($configuracoes as $key => $configuracao) {
  		echo '<tr>';
  		echo '<td>' . $this->Html->link($this->Html->image("ico_delete.png"), "/configuracoes/excluir/{$configuracao['Configuracao']['id']}", array('escape' => false), 'Confirma?') . '</td>';
- 		echo '<td>' . $configuracao['Configuracao']['parametro'] . $this->Form->input('id', array('name' => "data[$key][Configuracao][id]", 'type' => 'hidden', 'value' => $configuracao['Configuracao']['id'])) . '</td>';
- 		echo '<td>' . $this->Form->input('email', array('name' => "data[$key][Configuracao][valor]", 'value' => $configuracao['Configuracao']['valor'], 'label' => false, 'maxlength' => 200)) . '</td>';
+ 		echo '<td>' . $configuracao['Configuracao']['parametro'] . $this->Form->input('id', array('name' => 'data[Configuracao][' . $key . '][id]', 'type' => 'hidden', 'value' => $configuracao['Configuracao']['id'])) . '</td>';
+ 		echo '<td>' . $this->Form->input('email', array('name' => 'data[Configuracao][' . $key . '][valor]', 'value' => $configuracao['Configuracao']['valor'], 'label' => false, 'maxlength' => 200)) . '</td>';
  		echo '</tr>';
  	}
  	echo '</tbody></table>';
